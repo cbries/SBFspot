@@ -42,6 +42,7 @@ const char *delim2txt(const char delim);
 const char *dp2txt(char dp);
 const char *linebreak2txt(void);
 char *DateTimeFormatToDMY(const char *dtf);
+int ExportOnlyCurrentValueToJson(const Config *cfg, InverterData* const inverters[]);
 int ExportDayDataToCSV(const Config *cfg, InverterData* const inverters[]);
 int ExportEventsToCSV(const Config *cfg, InverterData* const inverters[], std::string dt_range_csv);
 int ExportMonthDataToCSV(const Config *cfg, InverterData* const inverters[]);

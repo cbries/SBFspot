@@ -1,0 +1,18 @@
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;24/09/2021 09:12:22;12;10109;Event;Info;Gerät;Zeitstellung erfolgt / neue Zeit;1199149891;0;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;24/09/2021 09:12:23;13;10110;Outgoing;Info;Gerät;Zeitsynchronisation fehlgeschlagen: |tn0|;0;0;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;24/09/2021 09:16:27;14;10104;Event;Info;Benutzerrechte;Parameter "Benutzerpasswort setzen" erfolgreich gesetzt;FFFFFFFF;FFFFFFFF;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;24/09/2021 09:18:28;16;10102;Event;Info;Gerät;Parameter "Zeitzone" erfolgreich gesetzt. |tnc| auf |tn8|;(UTC-AUTO) Automatisch über SMA Protokoll;(UTC+01:00) Amsterdam, Berlin, Bern, Rom, Stockholm, Wien;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;24/09/2021 09:18:28;17;10108;Event;Info;Gerät;Zeitstellung erfolgt / alte Zeit;1632467908;0;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;24/09/2021 09:18:28;18;10109;Event;Info;Gerät;Zeitstellung erfolgt / neue Zeit;1632467908;0;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;24/09/2021 09:19:51;19;27302;Incoming;Info;Gerät;Update Hauptrechner;0;0;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;24/09/2021 09:21:56;27;27302;Outgoing;Info;Gerät;Update Hauptrechner;0;0;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;24/09/2021 09:21:57;28;27312;Incoming;Info;Gerät;Update beendet;0;0;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;24/09/2021 09:22:37;33;27312;Outgoing;Info;Gerät;Update beendet;0;0;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;24/09/2021 10:15:56;36;10104;Event;Info;Gerät;Parameter "Gerätename" erfolgreich gesetzt;332D302E;34505453;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;24/09/2021 10:15:59;37;10102;Event;Info;Gerät;Parameter "Automatische Updates eingeschaltet" erfolgreich gesetzt. |tnc| auf |tn8|;Nein;Ja;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;24/09/2021 10:24:13;38;10251;Event;Info;Gerät;|tn4|: Kommunikationsstatus geht auf |tn8|;307;1725;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;24/09/2021 10:24:13;39;10253;Event;Info;Gerät;|tn4|: Verbindungsgeschwindigkeit geht auf |tn8|;1721;302;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;24/09/2021 10:24:13;40;10254;Event;Info;Gerät;|tn4|: Duplex-Mode geht auf |tn8|;1727;302;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;24/09/2021 10:38:47;41;10102;Event;Info;Anlagenkommunikation;Parameter "WLAN ist eingeschaltet" erfolgreich gesetzt. |tnc| auf |tn8|;Ja;Nein;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;27/09/2021 09:15:37;90;10102;Event;Info;Anlagenkommunikation;Parameter "" erfolgreich gesetzt. |tnc| auf |tn8|;Nein;Ja;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;27/09/2021 09:15:45;91;10102;Event;Info;Anlagenkommunikation;Parameter "" erfolgreich gesetzt. |tnc| auf |tn8|;Ja;Nein;Benutzer

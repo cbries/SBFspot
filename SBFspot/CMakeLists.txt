@@ -20,6 +20,7 @@ set(COMMON_SOURCES
     main.cpp
     misc.cpp
     mqtt.cpp
+    base64.cpp
     sunrise_sunset.cpp
 )
 
@@ -70,6 +71,8 @@ add_executable(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME}
     Boost::date_time
     bluetooth
+    curl
+    curlpp
     ${COMMON_LIBRARIES}
 )
 

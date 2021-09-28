@@ -1561,6 +1561,7 @@ int GetConfig(Config *cfg)
     strcpy(cfg->DateFormat, "%d/%m/%Y");
     strcpy(cfg->TimeFormat, "%H:%M:%S");
     cfg->synchTime = 1;
+    cfg->JSON_Export_Current = 1;
     cfg->CSV_Export = 1;
     cfg->CSV_ExtendedHeader = 1;
     cfg->CSV_Header = 1;
@@ -1753,6 +1754,17 @@ int GetConfig(Config *cfg)
                     else
                     {
                         fprintf(stderr, CFG_InvalidValue, variable, "(1200-3600)");
+                        rc = -2;
+                    }
+                }
+                else if(stricmp(variable, "JSON_Export_Current") == 0)
+                {
+                    lValue = strtol(value, &pEnd, 10);
+                    if (((lValue == 0) || (lValue == 1)) && (*pEnd == 0))
+                        cfg->JSON_Export_Current = (int)lValue;
+                    else
+                    {
+                        fprintf(stderr, CFG_InvalidValue, variable, CFG_Boolean);
                         rc = -2;
                     }
                 }
@@ -1976,7 +1988,7 @@ int GetConfig(Config *cfg)
         fprintf(stderr, "'CSV_Delimiter' and 'DecimalPoint' must be different character.\n");
         rc = -2;
     }
-
+    
     //Overrule CSV_Export from config with Commandline setting -nocsv
     if (cfg->nocsv == 1)
         cfg->CSV_Export = 0;
@@ -2065,6 +2077,7 @@ void ShowConfig(Config *cfg)
 		"\nDecimalPoint=" << dp2txt(cfg->decimalpoint) << \
 		"\nCSV_Delimiter=" << delim2txt(cfg->delimiter) << \
 		"\nPrecision=" << cfg->precision << \
+        "\nJSON_Export_Current=" << cfg->JSON_Export_Current << \
 		"\nCSV_Export=" << cfg->CSV_Export << \
 		"\nCSV_ExtendedHeader=" << cfg->CSV_ExtendedHeader << \
 		"\nCSV_Header=" << cfg->CSV_Header << \

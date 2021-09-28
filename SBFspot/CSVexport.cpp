@@ -34,6 +34,10 @@ DISCLAIMER:
 
 #include "CSVexport.h"
 #include "EventData.h"
+#include "base64.h"
+
+#include <curlpp/cURLpp.hpp>
+#include <curlpp/Options.hpp>
 
 using namespace std;
 
@@ -429,6 +433,82 @@ int WriteWebboxHeader(FILE *csv, const Config *cfg, InverterData* const inverter
 	return 0;
 }
 
+int ExportOnlyCurrentValueToJson(const Config *cfg, InverterData* const inverters[])
+{
+	time_t spottime = cfg->SpotTimeSource == 0 
+				? inverters[0]->InverterDatetime 
+				: time(NULL);
+
+	std::stringstream jsonpath;
+	jsonpath << strftime_t(cfg->outputPath, spottime);
+	CreatePath(jsonpath.str().c_str());
+
+	jsonpath << FOLDER_SEP 
+			<< cfg->plantname 
+			<< "-Current" 
+			/*<< strftime_t("%Y%m%d", spottime)*/ 
+			<< ".json";
+
+	FILE *jsonFile;
+
+	if ((jsonFile = fopen(jsonpath.str().c_str(), "w")) == NULL)
+	{
+		if (cfg->quiet == 0)
+		{
+			char msg[80 + MAX_PATH];
+			snprintf(msg, sizeof(msg), "Unable to open output file %s\n", jsonpath.str().c_str());
+			print_error(stdout, PROC_ERROR, msg);
+		}
+		return -1;
+	}
+
+	std::string json = "[\n";
+
+	for (uint32_t inv=0; inverters[inv]!=NULL && inv<MAX_INVERTERS; inv++)
+	{
+		InverterData *data = inverters[inv];
+
+		char FormattedFloat[16];
+		std::string currentWatt(FormatFloat(FormattedFloat, (float)data->TotalPac, 0, 0, '.'));
+		std::string todayWattHours(FormatDouble(FormattedFloat, (double)data->EToday/1000, 0, cfg->precision, '.'));
+		std::string totalWattHours(FormatDouble(FormattedFloat, (double)data->ETotal/1000, 0, cfg->precision, '.'));
+		std::string serial(FormatFloat(FormattedFloat, (double)data->Serial, 0, 0, '.'));		
+
+		std::string s;
+		s += "\t{\n";
+		s += "\t\t\"deviceName\": \"" + std::string(data->DeviceName) + "\",\n";
+		s += "\t\t\"deviceType\": \"" + std::string(data->DeviceType) + "\",\n";
+		s += "\t\t\"serial\": " + serial + ",\n";
+		s += "\t\t\"currentWatt\": " + currentWatt + ",\n";
+		s += "\t\t\"todayWattHours\": " + todayWattHours + ",\n";
+		s += "\t\t\"totalWattHours\": " + totalWattHours + "\n";
+		s += "\t}\n";
+
+		json += s;
+
+		if(inverters[inv+1]!=NULL && (inv+1)<MAX_INVERTERS)
+			json += ",\n";
+	}
+
+	json += "]\n";
+
+	fprintf(jsonFile, "%s", json.c_str());
+
+	fclose(jsonFile);
+
+	//
+	// do http get call to publish pv data
+	//
+	//td::vector<BYTE> myData;
+	std::string decodedData = base64_encode(json);
+	curlpp::Cleanup myCleanup;
+	std::ostringstream os;
+	os << curlpp::options::Url(std::string("https://www.christianbenjaminries.de/raspberry/pv/handle.php?data=") + decodedData);
+	string asAskedInQuestion = os.str();
+	std::cout << "Result: " << asAskedInQuestion << std::endl;
+	return 0;
+}
+
 int ExportSpotDataToCSV(const Config *cfg, InverterData* const inverters[])
 {
 	/*
@@ -521,7 +601,7 @@ int ExportSpotDataToCSV(const Config *cfg, InverterData* const inverters[])
 			fprintf(csv, strout, cfg->delimiter, tagdefs.getDesc(inverters[inv]->GridRelayStatus, "?").c_str());
 			fprintf(csv, strout, cfg->delimiter, FormatFloat(FormattedFloat, (float)inverters[inv]->Temperature/100, 0, cfg->precision, cfg->decimalpoint));
 			if (cfg->SpotWebboxHeader == 0)
-				fputs("\n", csv);
+				fputs("\n", csv);			
 		}
 
 		if (cfg->SpotWebboxHeader == 1)
@@ -529,6 +609,7 @@ int ExportSpotDataToCSV(const Config *cfg, InverterData* const inverters[])
 
 		fclose(csv);
 	}
+	
 	return 0;
 }
 
@@ -693,6 +774,9 @@ int ExportBatteryDataToCSV(const Config *cfg, InverterData* const inverters[])
 		char FormattedFloat[32];
 		const char *strout = "%c%s";
 
+	printf("Ries 3");
+
+
 		if (cfg->SpotWebboxHeader == 1)
 			fputs(strftime_t(cfg->DateTimeFormat, spottime), csv);
 
@@ -739,9 +823,6 @@ int ExportBatteryDataToCSV(const Config *cfg, InverterData* const inverters[])
 	return 0;
 }
 
-
-
-
 // Undocumented - For WebSolarLog usage only
 // WSL needs unlocalized strings
 const char *WSL_AttributeToText(int attribute)
@@ -776,6 +857,9 @@ int ExportSpotDataToWSL(const Config *cfg, InverterData* const inverters[])
 
 	char FormattedFloat[32];
 	const char *strout = "%s%c";
+
+	printf("Ries 4");
+
 
 	printf(strout,"WSL_START", cfg->delimiter);
 	printf(strout, strftime_t(cfg->DateTimeFormat, spottime), cfg->delimiter);
@@ -817,6 +901,9 @@ int ExportSpotDataTo123s(const Config *cfg, InverterData* const inverters[])
 	// Currently, only data of first inverter is exported
 	InverterData *invdata = inverters[0];
 
+	printf("Ries 5");
+
+
 	char FormattedFloat[32];
 	const char *strout = "%s%c";
 	const char *s123_dt_format = "%Y%m%d-%H:%M:%S";
@@ -830,6 +917,8 @@ int ExportSpotDataTo123s(const Config *cfg, InverterData* const inverters[])
 	float calPacTot = (float)(invdata->Pac1 + invdata->Pac2 + invdata->Pac3);
 	float calIacTot = (float)(invdata->Iac1 + invdata->Iac2 + invdata->Iac3);
 	float calUacMax = (float)max(max(invdata->Uac1, invdata->Uac2), invdata->Uac3);
+
+	printf("Ries 1");
 
 	//Calculated Inverter Efficiency
 	float calEfficiency = calPdcTot == 0 ? 0 : calPacTot / calPdcTot * 100;

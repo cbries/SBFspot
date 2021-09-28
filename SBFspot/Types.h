@@ -92,6 +92,7 @@ struct Config
     char	DateTimeFormat[32];
     char	DateFormat[32];
     char	TimeFormat[32];
+    int     JSON_Export_Current;
     int		CSV_Export;
     int		CSV_Header;
     int		CSV_ExtendedHeader;
