@@ -36,9 +36,6 @@ DISCLAIMER:
 #include "EventData.h"
 #include "base64.h"
 
-#include <curlpp/cURLpp.hpp>
-#include <curlpp/Options.hpp>
-
 using namespace std;
 
 //DecimalPoint To Text
@@ -496,16 +493,7 @@ int ExportOnlyCurrentValueToJson(const Config *cfg, InverterData* const inverter
 
 	fclose(jsonFile);
 
-	//
-	// do http get call to publish pv data
-	//
-	//td::vector<BYTE> myData;
-	std::string decodedData = base64_encode(json);
-	curlpp::Cleanup myCleanup;
-	std::ostringstream os;
-	os << curlpp::options::Url(std::string("https://www.christianbenjaminries.de/raspberry/pv/handle.php?data=") + decodedData);
-	string asAskedInQuestion = os.str();
-	std::cout << "Result: " << asAskedInQuestion << std::endl;
+	int jsonRes = DoJsonUpload(json);
 	return 0;
 }
 

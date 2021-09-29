@@ -3,8 +3,8 @@
 		"deviceName": "STP4.0-3AV-40 751",
 		"deviceType": "Sunny Tripower 4.0",
 		"serial": 3012642816,
-		"currentWatt": 0,
-		"todayWattHours": 8.226,
-		"totalWattHours": 40.560
+		"currentWatt": 85,
+		"todayWattHours": 2.762,
+		"totalWattHours": 43.322
 	}
 ]

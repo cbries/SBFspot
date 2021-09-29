@@ -10,6 +10,7 @@ set(COMMON_SOURCES
     ArchData.cpp
     Bluetooth.cpp
     CSVexport.cpp
+    JsonExport.cpp
     Ethernet.cpp
     EventData.cpp
     Inverter.cpp
