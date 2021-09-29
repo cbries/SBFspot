@@ -1,0 +1,19 @@
+
+0. install prequesite software/libraries
+- libboost-system-dev
+- libboost-date-time-dev
+- libbluetooth-dev
+
+1. call `./build.sh`
+2. link file `crontab_daydata_Garagendach` to `/usr/local/bin/sbfspot.3/daydata`
+3. link file `crontab_monthdata_Garagendach` to `/usr/local/bin/sbfspot.3/monthdata`
+4. call `crontab -e` and add:
+###
+## Avoid "No MTA installed, discarding output" syslog messages
+MAILTO=""
+
+## SBFspot
+*/5 6-22 * * * /usr/local/bin/sbfspot.3/daydata
+55 05 * * * /usr/local/bin/sbfspot.3/monthdata
+###
+

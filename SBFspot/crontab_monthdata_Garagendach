@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+log=~/sma/SBFspot/SBFspot/Data/Garagendach_$(date '+%Y%m').log
+~/sma/SBFspot/SBFspot/sbfspot.exe -v -sp0 -ad0 -am1 -ae1 -finq >>$log
+
