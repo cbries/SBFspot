@@ -36,6 +36,13 @@ DISCLAIMER:
 #include "EventData.h"
 #include "base64.h"
 
+#include "JsonExport.h"
+
+#include <stdio.h>
+#include <time.h>
+
+#include <iostream>
+
 using namespace std;
 
 //DecimalPoint To Text
@@ -459,6 +466,7 @@ int ExportOnlyCurrentValueToJson(const Config *cfg, InverterData* const inverter
 		return -1;
 	}
 
+	
 	std::string json = "[\n";
 
 	for (uint32_t inv=0; inverters[inv]!=NULL && inv<MAX_INVERTERS; inv++)
@@ -471,8 +479,13 @@ int ExportOnlyCurrentValueToJson(const Config *cfg, InverterData* const inverter
 		std::string totalWattHours(FormatDouble(FormattedFloat, (double)data->ETotal/1000, 0, cfg->precision, '.'));
 		std::string serial(FormatFloat(FormattedFloat, (double)data->Serial, 0, 0, '.'));		
 
+		char bufTT[96];
+		//sprintf(bufTT, "%d", timestamp);
+		sprintf(bufTT, "%lu", (unsigned long)time(NULL));
+
 		std::string s;
 		s += "\t{\n";
+		s += "\t\t\"lastUpdate\": \"" + std::string(bufTT) + "\",\n";
 		s += "\t\t\"deviceName\": \"" + std::string(data->DeviceName) + "\",\n";
 		s += "\t\t\"deviceType\": \"" + std::string(data->DeviceType) + "\",\n";
 		s += "\t\t\"serial\": " + serial + ",\n";

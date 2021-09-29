@@ -1,8 +1,6 @@
 #pragma once
 
-#include "osselect.h"
-#include "SBFspot.h"
-#include "EventData.h"
+#include <string>
 
-int DoJsonUpload(std::string json)
+int DoJsonUpload(std::string json); 
 
