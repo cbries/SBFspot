@@ -473,10 +473,17 @@ int ExportOnlyCurrentValueToJson(const Config *cfg, InverterData* const inverter
 	{
 		InverterData *data = inverters[inv];
 
+		double wattToday = (double)data->EToday/1000;
+		double wattTotal = (double)data->ETotal/1000;
+		if(wattToday < 0) {
+			wattTotal = wattToday * -1.0;
+			wattToday = 0.0;
+		}
+
 		char FormattedFloat[16];
 		std::string currentWatt(FormatFloat(FormattedFloat, (float)data->TotalPac, 0, 0, '.'));
-		std::string todayWattHours(FormatDouble(FormattedFloat, (double)data->EToday/1000, 0, cfg->precision, '.'));
-		std::string totalWattHours(FormatDouble(FormattedFloat, (double)data->ETotal/1000, 0, cfg->precision, '.'));
+		std::string todayWattHours(FormatDouble(FormattedFloat, wattToday, 0, cfg->precision, '.'));
+		std::string totalWattHours(FormatDouble(FormattedFloat, wattTotal, 0, cfg->precision, '.'));
 		std::string serial(FormatFloat(FormattedFloat, (double)data->Serial, 0, 0, '.'));		
 
 		char bufTT[96];
