@@ -1,11 +1,11 @@
 [
 	{
-		"lastUpdate": "1633063740",
+		"lastUpdate": "1635185636",
 		"deviceName": "STP4.0-3AV-40 751",
 		"deviceType": "Sunny Tripower 4.0",
 		"serial": 3012642816,
 		"currentWatt": 0,
-		"todayWattHours": 0.000,
-		"totalWattHours": 54.275
+		"todayWattHours": 6.515,
+		"totalWattHours": 196.908
 	}
 ]

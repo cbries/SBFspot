@@ -1,0 +1,13 @@
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;03/10/2021 08:28:33;195;10352;Incoming;Info;Externe Kommunikation;Webconnect-Fehler: Fehlerhafte Kommunikation;0;0;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;03/10/2021 09:41:34;200;10352;Outgoing;Info;Externe Kommunikation;Webconnect-Fehler: Fehlerhafte Kommunikation;0;0;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;03/10/2021 10:41:00;201;10351;Incoming;Info;Externe Kommunikation;Webconnect-Fehler: DNS Adresse konnte am Server (|s0|) nicht aufgelöst werden;;;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;03/10/2021 12:46:54;202;10351;Outgoing;Info;Externe Kommunikation;Webconnect-Fehler: DNS Adresse konnte am Server (|s0|) nicht aufgelöst werden;;;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;08/10/2021 01:15:48;266;10010;Event;Info;Gerät;Neustart Diagnosesystem;0;0;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;15/10/2021 01:42:26;423;10010;Event;Info;Gerät;Neustart Diagnosesystem;0;0;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;22/10/2021 02:55:18;539;10010;Event;Info;Gerät;Neustart Diagnosesystem;0;0;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;23/10/2021 15:16:33;567;10352;Incoming;Info;Externe Kommunikation;Webconnect-Fehler: Fehlerhafte Kommunikation;0;0;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;23/10/2021 16:19:21;568;10352;Outgoing;Info;Externe Kommunikation;Webconnect-Fehler: Fehlerhafte Kommunikation;0;0;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;24/10/2021 12:00:24;587;10353;Incoming;Info;Externe Kommunikation;Keine Antwort bei Registrierung  am Server;0;0;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;24/10/2021 12:04:37;588;10353;Outgoing;Info;Externe Kommunikation;Keine Antwort bei Registrierung  am Server;0;0;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;25/10/2021 08:55:15;600;3902;Incoming;Info;DC-Seite;Warten auf DC-Startbedingungen;0;0;Benutzer
+Sunny Tripower 4.0;STP4.0-3AV-40 751;378;3012642751;25/10/2021 08:59:04;606;3902;Outgoing;Info;DC-Seite;Warten auf DC-Startbedingungen;0;0;Benutzer
